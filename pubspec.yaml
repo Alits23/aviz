@@ -1,0 +1,112 @@
+name: aviz
+description: "A new Flutter project."
+
+publish_to: 'none' 
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  #either
+  dartz: ^0.10.1
+  #data
+  dio: ^5.3.3
+  #Depenedency
+  get_it: ^7.6.4
+  #bloc
+  flutter_bloc: ^8.1.3
+  bloc: ^8.1.0
+  #cashed Image
+  cached_network_image: ^3.2.3
+  #hive
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  #zarinpal
+  zarinpal: ^1.0.5
+  #deeplink and link
+  url_launcher: ^6.2.5
+  uni_links: ^0.5.1
+  #loading
+  loading_indicator: ^3.1.0 
+  #parser
+  intl: ^0.19.0 
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  #hive
+  hive_generator: ^1.1.3
+  build_runner: ^2.2.0
+  flutter_lints: ^3.0.0
+
+
+flutter:
+
+
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/images/
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  fonts:
+    - family: GR
+      fonts:
+        - asset: assets/fonts/GilroyRegular.ttf
+          weight: 400
+
+    - family: GM
+      fonts:
+        - asset: assets/fonts/GilroyMedium.ttf
+          weight: 500
+
+    - family: GB
+      fonts:
+        - asset: assets/fonts/GilroyBold.ttf
+          weight: 700
+
+    - family: GEB
+      fonts:
+        - asset: assets/fonts/GilroyExtraBold.ttf
+          weight: 800
+
+    - family: GH
+      fonts:
+        - asset: assets/fonts/GilroyHeavy.ttf
+          weight: 900
+
+    - family: SM
+      fonts:
+        - asset: assets/fonts/ShabnamMedium.ttf
+          weight: 500
+
+    - family: SB
+      fonts:
+        - asset: assets/fonts/ShabnamBold.ttf
+          weight: 700
+
+
+    - family: dana
+      fonts:
+        - asset: assets/fonts/dana.ttf
+          weight: 500
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
