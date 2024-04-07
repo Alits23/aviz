@@ -36,8 +36,11 @@ dependencies:
   loading_indicator: ^3.1.0 
   #parser
   intl: ^0.19.0 
+  #icons
   cupertino_icons: ^1.0.6
-
+  #map
+  flutter_map: ^6.1.0
+  latlong2: ^0.9.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

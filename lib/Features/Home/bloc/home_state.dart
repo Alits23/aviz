@@ -9,5 +9,9 @@ class HomeLoadingState extends HomeState {}
 
 class HomeResponseState extends HomeState {
   Either<String, List<Promotion>> hotPromotionList;
-  HomeResponseState(this.hotPromotionList);
+  Either<String, List<Promotion>> recentPromotionList;
+  HomeResponseState({
+    required this.hotPromotionList,
+    required this.recentPromotionList,
+  });
 }

@@ -1,5 +1,11 @@
+import 'package:aviz/DI/di.dart';
 import 'package:aviz/Features/Home/bloc/home_bloc.dart';
+import 'package:aviz/Features/Home/bloc/home_event.dart';
 import 'package:aviz/Features/Home/bloc/home_state.dart';
+import 'package:aviz/Features/Home/data/model/promotion.dart';
+import 'package:aviz/Widgets/hot_promotion_card.dart';
+import 'package:aviz/Widgets/normal_promotion_card.dart';
+import 'package:aviz/constans/colors/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,32 +14,220 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) {
+        var homeBloc = HomeBloc(locator.get());
+        homeBloc.add(HomeRequestList());
+        return homeBloc;
+      },
+      child: const HomeViewContainer(),
+    );
+  }
+}
+
+class HomeViewContainer extends StatelessWidget {
+  const HomeViewContainer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: BlocBuilder<HomeBloc, HomeState>(
           builder: (context, state) {
-            if (state is HomeLoadingState) {
-              return const Center(child: CircularProgressIndicator());
-            }
-            if (state is HomeResponseState) {
-              return state.hotPromotionList.fold(
-                (l) {
-                  return Text(l);
-                },
-                (r) {
-                  return ListView.builder(
-                    itemCount: r.length,
-                    itemBuilder: (context, index) {
-                      return Image.network(r[index].thumbnail);
-                    },
+            return state is HomeLoadingState
+                ? const Center(
+                    child: CircularProgressIndicator(
+                      color: CustomColors.primaryColor1,
+                    ),
+                  )
+                : Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: CustomScrollView(
+                      slivers: [
+                        const AppBar(),
+                        const HotPromotionTitle(),
+                        if (state is HomeResponseState) ...{
+                          state.hotPromotionList.fold(
+                            (l) {
+                              return SliverToBoxAdapter(
+                                child: Center(child: Text(l)),
+                              );
+                            },
+                            (hotPromotionList) {
+                              return HotPromotionList(hotPromotionList);
+                            },
+                          )
+                        },
+                        const RecentPromotionTitle(),
+                        if (state is HomeResponseState) ...{
+                          state.recentPromotionList.fold(
+                            (l) {
+                              return SliverToBoxAdapter(
+                                child: Text(l),
+                              );
+                            },
+                            (recentPromotionList) {
+                              return RecentPromotionList(recentPromotionList);
+                            },
+                          )
+                        },
+                      ],
+                    ),
                   );
-                },
-              );
-            }
-            return const Text('data');
           },
         ),
       ),
+    );
+  }
+}
+
+class RecentPromotionList extends StatelessWidget {
+  final List<Promotion> recentPromotionList;
+  const RecentPromotionList(
+    this.recentPromotionList, {
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverPadding(
+      padding: const EdgeInsets.only(bottom: 16),
+      sliver: SliverList(
+        delegate: SliverChildBuilderDelegate(
+          childCount: recentPromotionList.length,
+          (context, index) {
+            return GestureDetector(
+              child: NormalPromotionCard(recentPromotionList[index]),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class RecentPromotionTitle extends StatelessWidget {
+  const RecentPromotionTitle({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const SliverToBoxAdapter(
+      child: Padding(
+        padding:
+            EdgeInsets.only(left: 16.0, right: 16.0, top: 32.0, bottom: 24.0),
+        child: Row(
+          children: [
+            Text(
+              'آویزهای اخیر',
+              style: TextStyle(
+                fontFamily: 'sb',
+                fontSize: 16.0,
+                color: CustomColors.textGery1,
+              ),
+            ),
+            Spacer(),
+            Text(
+              'مشاهده همه',
+              style: TextStyle(
+                fontFamily: 'sm',
+                fontSize: 14.0,
+                color: CustomColors.textGerylight,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class HotPromotionList extends StatelessWidget {
+  final List<Promotion> hotPromotionList;
+  const HotPromotionList(
+    this.hotPromotionList, {
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverToBoxAdapter(
+      child: SizedBox(
+        height: 294.0,
+        child: ListView.builder(
+          padding: const EdgeInsets.only(right: 16.0, left: 16.0),
+          scrollDirection: Axis.horizontal,
+          itemCount: hotPromotionList.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.only(left: 16.0, bottom: 8.0),
+              child: GestureDetector(
+                onTap: () {
+                  //print('tapped');
+                },
+                child: HotPromotionCard(hotPromotionList[index]),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class HotPromotionTitle extends StatelessWidget {
+  const HotPromotionTitle({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const SliverToBoxAdapter(
+      child: Padding(
+        padding:
+            EdgeInsets.only(left: 16.0, right: 16.0, top: 32.0, bottom: 24.0),
+        child: Row(
+          children: [
+            Text(
+              'آویزهای داغ',
+              style: TextStyle(
+                fontFamily: 'sb',
+                fontSize: 16.0,
+                color: CustomColors.textGery1,
+              ),
+            ),
+            Spacer(),
+            Text(
+              'مشاهده همه',
+              style: TextStyle(
+                fontFamily: 'sm',
+                fontSize: 14.0,
+                color: CustomColors.textGerylight,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class AppBar extends StatelessWidget {
+  const AppBar({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(
+      title: Image.asset(
+        "assets/images/logo_with_not_background.png",
+      ),
+      centerTitle: true,
+      backgroundColor: Colors.transparent,
     );
   }
 }
