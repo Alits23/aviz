@@ -14,7 +14,7 @@ class CashedImage extends StatelessWidget {
         fit: BoxFit.cover,
         imageUrl: imageUrl!,
         errorWidget: (context, url, error) => Container(
-          color: CustomColors.textGery1,
+          color: CustomColors.textGery700,
         ),
         placeholder: (context, url) => Container(
           color: Colors.transparent,

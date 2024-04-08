@@ -18,7 +18,7 @@ class NormalPromotionCard extends StatelessWidget {
           color: Colors.white,
           shadows: const [
             BoxShadow(
-              color: CustomColors.textGerylight,
+              color: CustomColors.textGery300,
               blurRadius: 10.0, // soften the shadow
               spreadRadius: 0.0, //extend the shadow
               offset: Offset(0.0, 10),
@@ -42,7 +42,7 @@ class NormalPromotionCard extends StatelessWidget {
                       style: const TextStyle(
                         fontFamily: 'sb',
                         fontSize: 14.0,
-                        color: CustomColors.textGery1,
+                        color: CustomColors.textGery700,
                       ),
                     ),
                     const SizedBox(
@@ -53,7 +53,7 @@ class NormalPromotionCard extends StatelessWidget {
                       style: const TextStyle(
                         fontFamily: 'dana',
                         fontSize: 12.0,
-                        color: CustomColors.textGerylight,
+                        color: CustomColors.textGery300,
                       ),
                     ),
                     const SizedBox(
@@ -66,7 +66,7 @@ class NormalPromotionCard extends StatelessWidget {
                           style: TextStyle(
                             fontFamily: 'sb',
                             fontSize: 12.0,
-                            color: CustomColors.textGery1,
+                            color: CustomColors.textGery700,
                           ),
                         ),
                         const Spacer(),

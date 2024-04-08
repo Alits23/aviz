@@ -33,51 +33,49 @@ class HomeViewContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: BlocBuilder<HomeBloc, HomeState>(
-          builder: (context, state) {
-            return state is HomeLoadingState
-                ? const Center(
-                    child: CircularProgressIndicator(
-                      color: CustomColors.primaryColor1,
-                    ),
-                  )
-                : Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: CustomScrollView(
-                      slivers: [
-                        const AppBar(),
-                        const HotPromotionTitle(),
-                        if (state is HomeResponseState) ...{
-                          state.hotPromotionList.fold(
-                            (l) {
-                              return SliverToBoxAdapter(
-                                child: Center(child: Text(l)),
-                              );
-                            },
-                            (hotPromotionList) {
-                              return HotPromotionList(hotPromotionList);
-                            },
-                          )
-                        },
-                        const RecentPromotionTitle(),
-                        if (state is HomeResponseState) ...{
-                          state.recentPromotionList.fold(
-                            (l) {
-                              return SliverToBoxAdapter(
-                                child: Text(l),
-                              );
-                            },
-                            (recentPromotionList) {
-                              return RecentPromotionList(recentPromotionList);
-                            },
-                          )
-                        },
-                      ],
-                    ),
-                  );
-          },
-        ),
+      body: BlocBuilder<HomeBloc, HomeState>(
+        builder: (context, state) {
+          return state is HomeLoadingState
+              ? const Center(
+                  child: CircularProgressIndicator(
+                    color: CustomColors.primaryColor1,
+                  ),
+                )
+              : Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: CustomScrollView(
+                    slivers: [
+                      const AppBar(),
+                      const HotPromotionTitle(),
+                      if (state is HomeResponseState) ...{
+                        state.hotPromotionList.fold(
+                          (l) {
+                            return SliverToBoxAdapter(
+                              child: Center(child: Text(l)),
+                            );
+                          },
+                          (hotPromotionList) {
+                            return HotPromotionList(hotPromotionList);
+                          },
+                        )
+                      },
+                      const RecentPromotionTitle(),
+                      if (state is HomeResponseState) ...{
+                        state.recentPromotionList.fold(
+                          (l) {
+                            return SliverToBoxAdapter(
+                              child: Text(l),
+                            );
+                          },
+                          (recentPromotionList) {
+                            return RecentPromotionList(recentPromotionList);
+                          },
+                        )
+                      },
+                    ],
+                  ),
+                );
+        },
       ),
     );
   }
@@ -126,7 +124,7 @@ class RecentPromotionTitle extends StatelessWidget {
               style: TextStyle(
                 fontFamily: 'sb',
                 fontSize: 16.0,
-                color: CustomColors.textGery1,
+                color: CustomColors.textGery700,
               ),
             ),
             Spacer(),
@@ -135,7 +133,7 @@ class RecentPromotionTitle extends StatelessWidget {
               style: TextStyle(
                 fontFamily: 'sm',
                 fontSize: 14.0,
-                color: CustomColors.textGerylight,
+                color: CustomColors.textGery300,
               ),
             ),
           ],
@@ -196,7 +194,7 @@ class HotPromotionTitle extends StatelessWidget {
               style: TextStyle(
                 fontFamily: 'sb',
                 fontSize: 16.0,
-                color: CustomColors.textGery1,
+                color: CustomColors.textGery700,
               ),
             ),
             Spacer(),
@@ -205,7 +203,7 @@ class HotPromotionTitle extends StatelessWidget {
               style: TextStyle(
                 fontFamily: 'sm',
                 fontSize: 14.0,
-                color: CustomColors.textGerylight,
+                color: CustomColors.textGery300,
               ),
             ),
           ],
@@ -222,12 +220,13 @@ class AppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverAppBar(
-      title: Image.asset(
-        "assets/images/logo_with_not_background.png",
+    return SliverToBoxAdapter(
+      child: SizedBox(
+        height: 42.0,
+        child: Image.asset(
+          "assets/images/logo_with_not_background.png",
+        ),
       ),
-      centerTitle: true,
-      backgroundColor: Colors.transparent,
     );
   }
 }

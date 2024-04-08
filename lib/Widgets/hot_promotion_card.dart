@@ -21,7 +21,7 @@ class HotPromotionCard extends StatelessWidget {
         ),
         shadows: const [
           BoxShadow(
-            color: CustomColors.textGerylight,
+            color: CustomColors.textGery300,
             blurRadius: 10.0,
             spreadRadius: 0.0,
             offset: Offset(0.0, 10.0),
@@ -56,7 +56,7 @@ class HotPromotionCard extends StatelessWidget {
                     style: const TextStyle(
                       fontFamily: 'sb',
                       fontSize: 14.0,
-                      color: CustomColors.textGery1,
+                      color: CustomColors.textGery700,
                     ),
                   ),
                   const SizedBox(
@@ -67,7 +67,7 @@ class HotPromotionCard extends StatelessWidget {
                     style: const TextStyle(
                       fontFamily: 'dana',
                       fontSize: 12.0,
-                      color: CustomColors.textGerylight,
+                      color: CustomColors.textGery300,
                     ),
                   ),
                   const Spacer(),
@@ -78,7 +78,7 @@ class HotPromotionCard extends StatelessWidget {
                         style: TextStyle(
                           fontFamily: 'sb',
                           fontSize: 12.0,
-                          color: CustomColors.textGery1,
+                          color: CustomColors.textGery700,
                         ),
                       ),
                       const Spacer(),
