@@ -21,10 +21,10 @@ class HotPromotionCard extends StatelessWidget {
         ),
         shadows: const [
           BoxShadow(
-            color: CustomColors.textGery300,
+            color: CustomColors.shadow,
             blurRadius: 10.0,
             spreadRadius: 0.0,
-            offset: Offset(0.0, 10.0),
+            offset: Offset(0.0, 4.0),
           ),
         ],
       ),

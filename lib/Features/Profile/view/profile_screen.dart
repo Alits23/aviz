@@ -49,7 +49,7 @@ class AboutAviz extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border.all(
               width: 1,
-              color: CustomColors.textGery200,
+              color: CustomColors.borderGery200,
             ),
             borderRadius: BorderRadius.circular(4.0),
           ),
@@ -102,7 +102,7 @@ class Support extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border.all(
               width: 1,
-              color: CustomColors.textGery200,
+              color: CustomColors.borderGery200,
             ),
             borderRadius: BorderRadius.circular(4.0),
           ),
@@ -155,7 +155,7 @@ class Setting extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border.all(
               width: 1,
-              color: CustomColors.textGery200,
+              color: CustomColors.borderGery200,
             ),
             borderRadius: BorderRadius.circular(4.0),
           ),
@@ -208,7 +208,7 @@ class SavedAviz extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border.all(
               width: 1,
-              color: CustomColors.textGery200,
+              color: CustomColors.borderGery200,
             ),
             borderRadius: BorderRadius.circular(4.0),
           ),
@@ -261,7 +261,7 @@ class RecentView extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border.all(
               width: 1,
-              color: CustomColors.textGery200,
+              color: CustomColors.borderGery200,
             ),
             borderRadius: BorderRadius.circular(4.0),
           ),
@@ -314,7 +314,7 @@ class MyCard extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border.all(
               width: 1,
-              color: CustomColors.textGery200,
+              color: CustomColors.borderGery200,
             ),
             borderRadius: BorderRadius.circular(4.0),
           ),
@@ -368,7 +368,7 @@ class MyAviz extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border.all(
               width: 1,
-              color: CustomColors.textGery200,
+              color: CustomColors.borderGery200,
             ),
             borderRadius: BorderRadius.circular(4.0),
           ),
@@ -412,14 +412,14 @@ class Divider extends StatelessWidget {
     return SliverToBoxAdapter(
       child: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: 64.0,
+          horizontal: 16.0,
           vertical: 16.0,
         ),
         child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
             border: Border.all(
-              color: const Color.fromARGB(124, 192, 199, 195),
+              color: CustomColors.borderGery200,
               width: 1,
             ),
           ),
@@ -447,7 +447,7 @@ class ProfileContainer extends StatelessWidget {
           height: 95.0,
           decoration: BoxDecoration(
             border: Border.all(
-              color: CustomColors.textGery200,
+              color: CustomColors.borderGery200,
             ),
             borderRadius: BorderRadius.circular(4.0),
           ),
@@ -579,7 +579,6 @@ class SearchField extends StatelessWidget {
     return SliverToBoxAdapter(
       child: Padding(
         padding: const EdgeInsets.symmetric(
-          vertical: 16.0,
           horizontal: 16.0,
         ),
         child: SizedBox(
@@ -589,7 +588,7 @@ class SearchField extends StatelessWidget {
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(4),
                 borderSide: const BorderSide(
-                  color: CustomColors.textGery200,
+                  color: CustomColors.borderGery200,
                 ),
               ),
               focusedBorder: OutlineInputBorder(
@@ -623,8 +622,8 @@ class AppBar extends StatelessWidget {
     return SliverToBoxAdapter(
       child: Padding(
         padding: const EdgeInsets.only(
-          bottom: 16.0,
-          top: 10.0,
+          bottom: 32.0,
+          top: 20.0,
         ),
         child: SizedBox(
           height: 42.0,

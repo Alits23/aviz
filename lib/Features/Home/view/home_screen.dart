@@ -90,17 +90,20 @@ class RecentPromotionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverPadding(
-      padding: const EdgeInsets.only(bottom: 16),
-      sliver: SliverList(
-        delegate: SliverChildBuilderDelegate(
-          childCount: recentPromotionList.length,
-          (context, index) {
-            return GestureDetector(
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(
+        childCount: recentPromotionList.length,
+        (context, index) {
+          return Padding(
+            padding: const EdgeInsets.only(
+              left: 16.0,
+              right: 16.0,
+            ),
+            child: GestureDetector(
               child: NormalPromotionCard(recentPromotionList[index]),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }
@@ -154,7 +157,7 @@ class HotPromotionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: SizedBox(
-        height: 294.0,
+        height: 267.0,
         child: ListView.builder(
           padding: const EdgeInsets.only(right: 16.0, left: 16.0),
           scrollDirection: Axis.horizontal,
@@ -185,8 +188,7 @@ class HotPromotionTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return const SliverToBoxAdapter(
       child: Padding(
-        padding:
-            EdgeInsets.only(left: 16.0, right: 16.0, top: 32.0, bottom: 24.0),
+        padding: EdgeInsets.only(left: 16.0, right: 16.0, bottom: 24.0),
         child: Row(
           children: [
             Text(
@@ -221,10 +223,16 @@ class AppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: SizedBox(
-        height: 42.0,
-        child: Image.asset(
-          "assets/images/logo_with_not_background.png",
+      child: Padding(
+        padding: const EdgeInsets.only(
+          bottom: 32.0,
+          top: 20.0,
+        ),
+        child: SizedBox(
+          height: 42.0,
+          child: Image.asset(
+            "assets/images/logo_with_not_background.png",
+          ),
         ),
       ),
     );
