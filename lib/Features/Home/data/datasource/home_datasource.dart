@@ -34,10 +34,10 @@ class HomeRemoteDatasource extends IHomeDatasource {
   @override
   Future<List<Promotion>> getRecentPromotions() async {
     try {
-      Map<String, dynamic> promotionQuery = {'filter': 'is_hot=false'};
+      // Map<String, dynamic> promotionQuery = {'filter': 'is_hot=false'};
       var response = await _dio.get(
         'collections/promotion/records',
-        queryParameters: promotionQuery,
+        // queryParameters: promotionQuery,
       );
       return response.data['items']
           .map<Promotion>((jsonObject) => Promotion.fromjson(jsonObject))

@@ -1,5 +1,6 @@
 import 'package:aviz/constans/colors/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -23,7 +24,45 @@ class ProfileScreen extends StatelessWidget {
             Setting(),
             Support(),
             AboutAviz(),
+            Version()
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class Version extends StatelessWidget {
+  const Version({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const SliverToBoxAdapter(
+      child: Padding(
+        padding: EdgeInsets.only(bottom: 32.0, top: 32.0),
+        child: SizedBox(
+          child: Column(
+            children: [
+              Text(
+                'نسخه',
+                style: TextStyle(
+                  color: CustomColors.textGery400,
+                  fontFamily: 'sm',
+                  fontSize: 14.0,
+                ),
+              ),
+              Text(
+                '1.5.9',
+                style: TextStyle(
+                  color: CustomColors.textGery400,
+                  fontFamily: 'sm',
+                  fontSize: 14.0,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -578,9 +617,7 @@ class SearchField extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 16.0,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: SizedBox(
           height: 40.0,
           child: TextField(
@@ -604,6 +641,7 @@ class SearchField extends StatelessWidget {
                 color: CustomColors.textGery300,
               ),
               prefixIcon: Image.asset('assets/images/inactive_search_icon.png'),
+              contentPadding: const EdgeInsets.symmetric(vertical: 8.0),
             ),
           ),
         ),
