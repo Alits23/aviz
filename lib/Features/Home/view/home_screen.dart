@@ -33,49 +33,51 @@ class HomeViewContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<HomeBloc, HomeState>(
-        builder: (context, state) {
-          return state is HomeLoadingState
-              ? const Center(
-                  child: CircularProgressIndicator(
-                    color: CustomColors.primaryColor1,
-                  ),
-                )
-              : Directionality(
-                  textDirection: TextDirection.rtl,
-                  child: CustomScrollView(
-                    slivers: [
-                      const AppBar(),
-                      const HotPromotionTitle(),
-                      if (state is HomeResponseState) ...{
-                        state.hotPromotionList.fold(
-                          (l) {
-                            return SliverToBoxAdapter(
-                              child: Center(child: Text(l)),
-                            );
-                          },
-                          (hotPromotionList) {
-                            return HotPromotionList(hotPromotionList);
-                          },
-                        )
-                      },
-                      const RecentPromotionTitle(),
-                      if (state is HomeResponseState) ...{
-                        state.recentPromotionList.fold(
-                          (l) {
-                            return SliverToBoxAdapter(
-                              child: Text(l),
-                            );
-                          },
-                          (recentPromotionList) {
-                            return RecentPromotionList(recentPromotionList);
-                          },
-                        )
-                      },
-                    ],
-                  ),
-                );
-        },
+      body: SafeArea(
+        child: BlocBuilder<HomeBloc, HomeState>(
+          builder: (context, state) {
+            return state is HomeLoadingState
+                ? const Center(
+                    child: CircularProgressIndicator(
+                      color: CustomColors.primaryColor1,
+                    ),
+                  )
+                : Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: CustomScrollView(
+                      slivers: [
+                        const AppBar(),
+                        const HotPromotionTitle(),
+                        if (state is HomeResponseState) ...{
+                          state.hotPromotionList.fold(
+                            (l) {
+                              return SliverToBoxAdapter(
+                                child: Center(child: Text(l)),
+                              );
+                            },
+                            (hotPromotionList) {
+                              return HotPromotionList(hotPromotionList);
+                            },
+                          )
+                        },
+                        const RecentPromotionTitle(),
+                        if (state is HomeResponseState) ...{
+                          state.recentPromotionList.fold(
+                            (l) {
+                              return SliverToBoxAdapter(
+                                child: Text(l),
+                              );
+                            },
+                            (recentPromotionList) {
+                              return RecentPromotionList(recentPromotionList);
+                            },
+                          )
+                        },
+                      ],
+                    ),
+                  );
+          },
+        ),
       ),
     );
   }
@@ -226,7 +228,6 @@ class AppBar extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(
           bottom: 32.0,
-          top: 20.0,
         ),
         child: SizedBox(
           height: 42.0,

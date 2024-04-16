@@ -1,5 +1,7 @@
+import 'package:aviz/Features/Add/view/add_screen.dart';
 import 'package:aviz/Features/Home/view/home_screen.dart';
 import 'package:aviz/Features/Profile/view/profile_screen.dart';
+import 'package:aviz/Features/Search/view/search_screen.dart';
 import 'package:aviz/constans/colors/color.dart';
 import 'package:flutter/material.dart';
 
@@ -20,10 +22,10 @@ class _BottomNavigationState extends State<BottomNavigation> {
       child: Scaffold(
         body: IndexedStack(
           index: selectedIndex,
-          children: [
+          children: const [
             HomeScreen(),
-            ProfileScreen(),
-            ProfileScreen(),
+            SearchScreen(),
+            AddScreen(),
             ProfileScreen(),
           ],
         ),

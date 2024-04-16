@@ -8,24 +8,26 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Directionality(
-        textDirection: TextDirection.rtl,
-        child: CustomScrollView(
-          slivers: [
-            AppBar(),
-            SearchField(),
-            ProfileTitle(),
-            ProfileContainer(),
-            Divider(),
-            MyAviz(),
-            MyCard(),
-            RecentView(),
-            SavedAviz(),
-            Setting(),
-            Support(),
-            AboutAviz(),
-            Version()
-          ],
+      body: SafeArea(
+        child: Directionality(
+          textDirection: TextDirection.rtl,
+          child: CustomScrollView(
+            slivers: [
+              AppBar(),
+              SearchField(),
+              ProfileTitle(),
+              ProfileContainer(),
+              Divider(),
+              MyAviz(),
+              MyCard(),
+              RecentView(),
+              SavedAviz(),
+              Setting(),
+              Support(),
+              AboutAviz(),
+              Version()
+            ],
+          ),
         ),
       ),
     );
@@ -661,7 +663,6 @@ class AppBar extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(
           bottom: 32.0,
-          top: 20.0,
         ),
         child: SizedBox(
           height: 42.0,
